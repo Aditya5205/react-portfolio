@@ -1,12 +1,28 @@
 import React from "react";
 
 const Header_new = ({ handleNavigation, activePage }) => {
+  // const [small, setSmall] = useState(false);
+
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("scroll", () => setSmall(window.scrollY > 300));
+  //   }
+  // }, []);
+
   return (
     <>
-      <header className="fixed z-50 flex h-20 w-full flex-none items-center justify-center">
-        <nav className="flex list-none flex-wrap gap-x-16 ">
+      <header
+        className={`fixed flex h-20 z-50 w-full flex-none items-center justify-center bg-current`}
+      >
+        <nav
+          className={`flex list-none flex-wrap gap-x-16 border-white border rounded-full px-10 py-3 `}
+        >
           <li
-            className={`cursor-pointer text-2xl font-bold ${activePage === "home" ? "p-1.5 text-white" : " bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent"}`}
+            className={`cursor-pointer text-2xl font-bold ${
+              activePage === "home"
+                ? "translate-y-1 ease-in-out text-white"
+                : " bg-gradient-to-r from-sky-300 to-grad_blue bg-clip-text text-transparent"
+            }`}
           >
             <a href="home" onClick={(e) => handleNavigation(e, 0)}>
               Home
@@ -14,8 +30,11 @@ const Header_new = ({ handleNavigation, activePage }) => {
           </li>
 
           <li
-            className={`cursor-pointer text-2xl font-bold ${activePage === "about" ? "p-1.5 text-white" : " bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent"}`}
-            // onClick={() => handleNavigation("about-id")}
+            className={`cursor-pointer text-2xl font-bold ${
+              activePage === "about"
+                ? "translate-y-1 ease-in-out text-white"
+                : " bg-gradient-to-r from-sky-300 to-grad_blue bg-clip-text text-transparent"
+            }`}
           >
             <a href="about" onClick={(e) => handleNavigation(e, 1)}>
               About
@@ -23,7 +42,11 @@ const Header_new = ({ handleNavigation, activePage }) => {
           </li>
 
           <li
-            className={`cursor-pointer text-2xl font-bold ${activePage === "projects" ? "p-1.5 text-white" : " bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent"}`}
+            className={`cursor-pointer text-2xl font-bold ${
+              activePage === "projects"
+                ? "translate-y-1 ease-in-out text-white"
+                : " bg-gradient-to-r from-sky-300 to-grad_blue bg-clip-text text-transparent"
+            }`}
           >
             <a href="projects" onClick={(e) => handleNavigation(e, 2)}>
               Projects
@@ -31,9 +54,13 @@ const Header_new = ({ handleNavigation, activePage }) => {
           </li>
 
           <li
-            className={`cursor-pointer text-2xl font-bold ${activePage === "contact" ? "p-1.5 text-white" : " bg-gradient-to-r from-sky-300 to-blue-500 bg-clip-text text-transparent"}`}
+            className={`cursor-pointer text-2xl font-bold ${
+              activePage === "contact"
+                ? "translate-y-1 ease-in-out text-white"
+                : " bg-gradient-to-r from-sky-300 to-grad_blue bg-clip-text text-transparent"
+            }`}
           >
-            <a href="contact" onClick={(e) => handleNavigation(e, 1)}>
+            <a href="contact" onClick={(e) => handleNavigation(e, 3)}>
               Contact Me
             </a>
           </li>

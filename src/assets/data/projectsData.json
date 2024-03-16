@@ -1,0 +1,22 @@
+{
+  "slides": [
+    {
+      "title": "Game Matrix",
+      "body": "A Game Recommendation Website consists of over 20,000 games to generate recommendations. Also get to know what other users are playing.",
+      "live": "https://gamematrix.vercel.app",
+      "github": "https://github.com/Aditya5205/Game-recommendation-frontend.git"
+    },
+    {
+      "title": "Personal PortFolio",
+      "body": "My portfolio is a visual journey through my professional endeavors. It's a snapshot of the projects that define my expertise and creative vision. Explore, be inspired.",
+      "live": "",
+      "github": "https://github.com/Aditya5205/react-portfolio.git"
+    },
+    {
+      "title": "Game Recommendation Model",
+      "body": "A Machine Leaning model built in python with the help of various libraries to recommend similiar games based on the input of the user.",
+      "live": "",
+      "github": "https://github.com/Aditya5205/ML-Project-Game-Recommendation.git"
+    }
+  ]
+}

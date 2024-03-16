@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-// import { Outlet, useNavigate } from "react-router-dom";
 import { Home, Header_new, About, Projects, Contact } from "./index.js";
 
 import { gsap } from "gsap";
@@ -10,8 +9,6 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 import { ReactLenis } from "@studio-freight/react-lenis";
 
-// import useScript from "./scriptValues.js";
-
 const PortfolioLayout = () => {
   useEffect(() => {
     const script = document.createElement("script");
@@ -19,24 +16,17 @@ const PortfolioLayout = () => {
     script.type = "module";
     script.async = true;
     document.body.appendChild(script);
-    // console.log(script);
     return () => {
       document.body.removeChild(script);
     };
   }, []);
-
-  // const runScript = useScript("p1");
-
-  // const lenis = useLenis(({ scroll }) => {
-  //   // called every scroll
-  // });
 
   const comp = useRef();
   const [activePage, setActivePage] = useState("home");
   const { contextSafe } = useGSAP(
     () => {
       let sections = gsap.utils.toArray(".panels");
-      // console.log(sections[0].id);
+      let projectSections = gsap.utils.toArray(".project-slides");
 
       const tl = gsap.timeline();
 
@@ -47,33 +37,41 @@ const PortfolioLayout = () => {
         opacity: 0,
       });
 
-      // const scroller = gsap.to(sections, {
-      //   xPercent: -100 * (sections.length - 1),
-      //   ease: "none", // <-- IMPORTANT!
-      //   scrollTrigger: {
-      //     trigger: ".main-container",
-      //     pin: true,
-      //     scrub: 1,
-      //     // markers: true,
-      //     // snap: 1 / (sections.length - 1),
-      //     end: () => "+=" + document.querySelector(".panels").offsetHeight,
-      //     // onEnter: () => console.log("enter"),
-      //   },
-      // });
+      tl.from("#about-card", {
+        scrollTrigger: {
+          trigger: "#about-id",
+          start: "top center",
+          end: "+=200 center",
+          scrub: 1,
+          // markers: true,
+          toggleActions: "play none none pause",
+        },
+        xPercent: "-50",
+      });
+
+      const scroller = gsap.to(projectSections, {
+        xPercent: -100 * (projectSections.length - 1),
+        ease: "none", // IMPORTANT
+        scrollTrigger: {
+          trigger: ".projects-container",
+          pin: true,
+          scrub: 1,
+          // markers: true,
+          snap: 1 / (projectSections.length - 1),
+          end: () =>
+            "+=" + document.querySelector(".project-slides").offsetHeight * 3,
+        },
+      });
 
       sections.forEach((section, i) => {
         ScrollTrigger.create({
           trigger: `#${section.id}`,
-          // containerAnimation: scroller,
           start: "left center",
-          end: "right center",
-          // overwrite: "auto",
-          markers: true,
+          end: `${i === 2 ? "+=400% center" : "right center"}`,
+          // markers: true,
           onEnter: () => setActivePage(section.id.slice(0, -3)),
           onEnterBack: () => setActivePage(section.id.slice(0, -3)),
           // id: "section-" + i,
-          // onLeave: () => console.log("left " + section.id),
-          // onLeaveBack: () => console.log("left back " + section.id),
         });
       });
 
@@ -85,47 +83,21 @@ const PortfolioLayout = () => {
       //   preventDefault: true,
       //   wheelSpeed: -1,
       // });
-
-      gsap.from(".project-section", {
-        // yPercent: 100,
-        scale: 0,
-        opacity: 0,
-        // duration: 1,
-        stagger: {
-          each: 0.2,
-          from: "random",
-        },
-        scrollTrigger: {
-          trigger: "#projects-id",
-          start: "left center",
-          toggleActions: "restart pause resume pause",
-          // end: "right center",
-          // pin: ".pin-image-container",
-          // containerAnimation: scroller,
-          // markers: true,
-          // overwrite: "auto",
-        },
-      });
     },
     { scope: comp }
   );
 
-  const handleNavigation = contextSafe((e, i) => {
+  const handleNavigation = (e, i) => {
     e.preventDefault();
     let selectedSlide = e.target.getAttribute("href");
     gsap.to(window, {
       duration: 1,
       scrollTo: {
         y: `#${selectedSlide}-id`,
-        // y: i * window.innerHeight,
       },
-      ease: "power2.out",
-      // overwrite: "auto",
+      ease: "power1.inOut",
     });
-    // setActivePage(e.target.getAttribute("href"));
-  });
-
-  // console.log(parameters);
+  };
 
   return (
     <ReactLenis
@@ -136,7 +108,7 @@ const PortfolioLayout = () => {
     >
       <div
         className="min-w-screen main-main-container min-h-screen
-        snap-y snap-mandatory overscroll-y-none"
+        overscroll-y-none "
         ref={comp}
       >
         <canvas className="webgl fixed -z-50"></canvas>
@@ -144,11 +116,22 @@ const PortfolioLayout = () => {
           handleNavigation={handleNavigation}
           activePage={activePage}
         />
-        {/* <Header/> */}
-        <div className="main-container h-screen w-screen">
+
+        <div className="main-container">
           <Home />
           <About />
-          <Projects />
+          <div
+            className="projects-container panels h-full w-[300%]"
+            id="projects-id"
+          >
+            <div className="text-5xl w-full h-fit absolute mt-20 ml-28 text-white">
+              <span className="bg-gradient-to-r from-sky-300 to-grad_blue bg-clip-text text-transparent">
+                My{" "}
+              </span>
+              Projects
+            </div>
+            <Projects />
+          </div>
           <Contact />
         </div>
       </div>

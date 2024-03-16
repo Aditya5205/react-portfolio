@@ -3,19 +3,20 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: "Mori";
-  src: url("./assets/PPMori-SemiBold-992b0b7f.woff");
+  font-family: "Curetro";
+  src: url("./assets/fonts/Curetro-ax09K.ttf");
 }
 
 @layer base {
   html {
-    font-family: "Mori", sans-serif;
+    font-family: "Curetro", sans-serif;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* scroll-behavior: smooth; */
   }
 }
 
-.center {
-  @apply flex flex-wrap items-center justify-center;
+@layer base {
+  body {
+    overflow-x: hidden;
+  }
 }

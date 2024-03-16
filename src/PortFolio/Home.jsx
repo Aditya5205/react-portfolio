@@ -8,7 +8,7 @@ const Home = () => {
         id="home-id"
       >
         <h1
-          className="mb-28 ml-28 flex w-fit items-end bg-gradient-to-r from-white to-blue-500 bg-clip-text text-9xl text-transparent contrast-100 saturate-150"
+          className="mb-28 ml-28 flex w-fit items-end bg-gradient-to-r from-white to-grad_blue bg-clip-text text-9xl text-transparent contrast-100 saturate-150"
           id="home-id-text"
         >
           Hello,

@@ -164,7 +164,7 @@ function generateGalaxy() {
   });
 
   points = new THREE.Points(geometry, material);
-  points.position.set(7, 3, 3);
+  points.position.set(2, 3, 0);
   scene.add(points);
 }
 
@@ -202,10 +202,10 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-// camera.position.x = 3;
+// camera.position.x = 4;
 // camera.position.y = 3;
 // camera.position.z = 3;
-camera.position.set(3, 5, 10);
+camera.position.set(2, 4, 5);
 scene.add(camera);
 
 // Controls
