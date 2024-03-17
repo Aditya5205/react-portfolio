@@ -1,4 +1,5 @@
 import { slides } from "../assets/data/projectsData.json";
+import github_logo from "../assets/images/github.png";
 
 const Projects = () => {
   return (
@@ -22,10 +23,13 @@ const Projects = () => {
                     <a href={`${project.live}`}>Live</a>
                   </div>
                 )}
-                <a
-                  href={`${project.github}`}
-                  className="h-10 w-10 ml-auto bg-github_icon rounded-full bg-white bg-cover bg-center bg-no-repeat p-1 hover:opacity-70"
-                ></a>
+                <a href={`${project.github}`} className="ml-auto">
+                  <img
+                    className="w-10 rounded-full bg-white hover:opacity-70"
+                    src={github_logo}
+                    alt="github_logo"
+                  />
+                </a>
               </div>
             </div>
           </section>

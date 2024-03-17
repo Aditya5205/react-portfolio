@@ -8,18 +8,10 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 import { ReactLenis } from "@studio-freight/react-lenis";
+import useScript from "../hooks/useScript.js";
 
 const PortfolioLayout = () => {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "../script.js";
-    script.type = "module";
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
+  useScript("../assets/script.js");
 
   const comp = useRef();
   const [activePage, setActivePage] = useState("home");

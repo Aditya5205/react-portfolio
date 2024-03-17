@@ -1,4 +1,6 @@
 import React from "react";
+import linkedin_icon from "../assets/images/linkedin.png";
+import x_icon from "../assets/images/twitter.png";
 
 const Contact = () => {
   return (
@@ -15,12 +17,21 @@ const Contact = () => {
           <div className="flex ml-auto gap-2">
             <a
               href="https://www.linkedin.com/in/aditya-singh-83ab3b242/"
-              className="h-10 w-10 ml-auto bg-linkedin_icon rounded-full bg-white bg-cover bg-center bg-no-repeat p-1 hover:opacity-70"
-            ></a>
-            <a
-              href="https://twitter.com/aditya_5205"
-              className="h-10 w-10 ml-auto bg-x_icon rounded-full bg-white bg-cover bg-center bg-no-repeat p-1 hover:opacity-70"
-            ></a>
+              className="ml-auto"
+            >
+              <img
+                className="w-10 rounded-full bg-white hover:opacity-70"
+                src={linkedin_icon}
+                alt="linkedin_icon"
+              />
+            </a>
+            <a href="https://twitter.com/aditya_5205" className="ml-auto ">
+              <img
+                className="w-10 rounded-full bg-white hover:opacity-70"
+                src={x_icon}
+                alt="x_icon"
+              />
+            </a>
           </div>
         </div>
         <form className="mt-12 flex h-fit flex-col text-xl">
